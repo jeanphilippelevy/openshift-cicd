@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: s2i-build-and-deploy
-  namespace: springboot
+  namespace: springboot-dev
 spec:
   params:
     - name: APP_NAME

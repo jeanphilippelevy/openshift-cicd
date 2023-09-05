@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: s2i-deploy
-  namespace: springboot
+  namespace: springboot-dev
 spec:
   params:
     - default: springboot-jpl
