@@ -37,3 +37,13 @@ spec:
   selector:
     app: java-springboot-app
 
+---
+kind: Route
+apiVersion: v1
+metadata:
+  name: springboot-prod 
+spec:
+  host: my-java-springboot.apps.ocp.jpl.ovh 
+  to:
+    kind: Service
+    name: my-java-springboot-svc 
