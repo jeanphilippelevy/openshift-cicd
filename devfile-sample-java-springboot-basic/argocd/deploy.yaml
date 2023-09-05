@@ -25,7 +25,7 @@ spec:
               cpu: "10m"
 ---
 kind: Service
-apiVersion: v1
+apiVersion: route.openshift.io/v1
 metadata:
   name: my-java-springboot-svc
 spec:
