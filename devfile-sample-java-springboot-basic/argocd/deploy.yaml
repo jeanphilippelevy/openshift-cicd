@@ -48,4 +48,4 @@ spec:
     kind: Service
     name: my-java-springboot-svc 
   port:
-    targetPort: 8080-tcp
+    targetPort: http-8080
