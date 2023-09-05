@@ -47,3 +47,5 @@ spec:
   to:
     kind: Service
     name: my-java-springboot-svc 
+  port:
+    targetPort: 8080-tcp
