@@ -1,4 +1,7 @@
 # ARGOCD
+
+Configure ArgoCD rbac default policies.
+
 ```
 oc edit argocd openshift-gitops -n openshift-gitops
 ```
@@ -11,7 +14,18 @@ oc edit argocd openshift-gitops -n openshift-gitops
       g, argocd-admins, role:admin
 ```
 
+```
+oc edit cm argocd-rbac-cm -n openshift-gitops
+```
+
+```yaml
+policy.default: ""
+```
+
 # TEKTON
+
+Create secret for webhook and for registry access.
+
 ```
 oc create secret generic pipeline-trigger-secret --from-literal=secretToken=XXX -n <namespace>
 oc apply -f quay-secret.yaml -n <namespace>
