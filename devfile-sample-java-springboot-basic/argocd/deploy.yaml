@@ -13,6 +13,7 @@ spec:
     metadata:
       labels:
         app: java-springboot-app
+        version: "1.1"
     spec:
       containers:
         - name: my-java-springboot
