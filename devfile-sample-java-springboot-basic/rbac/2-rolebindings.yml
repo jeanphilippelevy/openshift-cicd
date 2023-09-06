@@ -2,7 +2,7 @@
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: edit
+  name: edit-power-dev-dev
   namespace: springboot-dev
 subjects:
   - kind: Group
@@ -17,7 +17,7 @@ roleRef:
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: edit
+  name: edit-power-dev-prod
   namespace: springboot-prod
 subjects:
   - kind: Group
@@ -32,7 +32,7 @@ roleRef:
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: edit
+  name: edit-regular-dev-dev
   namespace: springboot-dev
 subjects:
   - kind: Group
