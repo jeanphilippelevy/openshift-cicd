@@ -1,0 +1,21 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: Trigger
+metadata:
+  name: pipeline-t
+spec:
+  #serviceAccountName: pipeline
+  interceptors:
+    - github:
+        secretRef:
+          secretName: pipeline-trigger-secret
+          secretKey: secretToken
+        eventTypes:
+        - push
+    - cel:
+        overlays:
+        - key: short_sha
+          expression: "body.head_commit.id.truncate(7)"
+  bindings:
+  - ref: pipeline-tb
+  template:
+    ref: pipeline-tt

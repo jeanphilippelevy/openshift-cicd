@@ -1,0 +1,9 @@
+---
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  name: pipeline-el
+spec:
+  serviceAccountName: pipeline
+  triggers:
+    - triggerRef: pipeline-t
