@@ -1,5 +1,9 @@
 # ARGOCD
-```oc edit argocd openshift-gitops -n openshift-gitops
+```
+oc edit argocd openshift-gitops -n openshift-gitops
+```
+
+```yaml
   rbac:
     policy: |
       g, system:cluster-admins, role:admin
