@@ -5,6 +5,7 @@ metadata:
   name: argocd-admins
 users:
 - admin
+- jeanphilippelevy
 
 ---
 apiVersion: user.openshift.io/v1
