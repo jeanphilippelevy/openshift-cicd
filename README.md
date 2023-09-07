@@ -12,6 +12,8 @@ oc edit argocd openshift-gitops -n openshift-gitops
       g, system:cluster-admins, role:admin
       g, cluster-admins, role:admin
       g, argocd-admins, role:admin
+      p, role:power-dev, *, *, default/*, allow
+      g, power-dev, role:power-dev
 ```
 
 ```
