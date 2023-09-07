@@ -2,6 +2,14 @@
 apiVersion: user.openshift.io/v1
 kind: Group
 metadata:
+  name: argocd-admins
+users:
+- admin
+
+---
+apiVersion: user.openshift.io/v1
+kind: Group
+metadata:
   name: power-dev
 users:
 - dev1
