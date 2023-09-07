@@ -37,5 +37,6 @@ oc secret link pipeline quay-secret --for=pull,mount -n <namespace>
 Don't allow all users to create projects.
 
 ```
+oc patch clusterrolebinding.rbac self-provisioners -p '{ "metadata": { "annotations": { "rbac.authorization.kubernetes.io/autoupdate": "false" } } }'
 oc adm policy remove-cluster-role-from-group self-provisioner system:authenticated:oauth
 ```
