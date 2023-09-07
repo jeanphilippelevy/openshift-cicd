@@ -25,7 +25,7 @@ spec:
   destination:
     namespace: springboot-prod
     server: 'https://kubernetes.default.svc'
-  project: default
+  project: dev
   source:
     path: devfile-sample-java-springboot-basic/deploy
     repoURL: 'https://github.com/jeanphilippelevy/openshift-cicd'
