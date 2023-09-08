@@ -3,7 +3,7 @@ apiVersion: apps/v1
 metadata:
   name: my-java-springboot
   labels:
-    version: "1.2"
+    version: "1.3"
 spec:
   replicas: 1
   selector:
@@ -13,7 +13,7 @@ spec:
     metadata:
       labels:
         app: java-springboot-app
-        version: "1.2"
+        version: "1.3"
     spec:
       containers:
         - name: my-java-springboot
