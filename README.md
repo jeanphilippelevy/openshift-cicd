@@ -1,5 +1,11 @@
 # ARGOCD
 
+Add role admin to argocd
+
+```
+oc adm policy add-role-to-user admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller -n <namespace>
+```
+
 Configure ArgoCD rbac default policies.
 
 ```
