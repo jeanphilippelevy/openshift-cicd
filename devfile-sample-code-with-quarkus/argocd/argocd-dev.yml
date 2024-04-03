@@ -1,0 +1,37 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: dev
+  namespace: openshift-gitops
+spec:
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  destinations:
+    - name: in-cluster
+      namespace: '*'
+      server: 'https://kubernetes.default.svc'
+  sourceRepos:
+    - 'https://github.com/jeanphilippelevy/openshift-cicd'
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: quarkus-prod
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: quarkus-prod
+    server: 'https://kubernetes.default.svc'
+  project: dev
+  source:
+    path: devfile-sample-code-with-quarkus/deploy
+    repoURL: 'https://github.com/jeanphilippelevy/openshift-cicd'
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+      - CreateNamespace=true

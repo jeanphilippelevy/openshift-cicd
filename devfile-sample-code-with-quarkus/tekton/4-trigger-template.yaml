@@ -1,0 +1,45 @@
+---
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: pipeline-tt
+spec:
+  params:
+    - name: gitrevision
+      description: The git revision (id)
+    - name: short-id
+      description: truncated commit id
+    - name: gitrepositoryurl
+      description: The git repository url
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        annotations:
+        labels:
+          tekton.dev/pipeline: s2i-build-and-deploy
+        generateName: pipeline-triggered-run-
+      spec:
+        params:
+        - name: APP_NAME
+          value: quarkus-jpl
+        - name: IMAGE_NAME
+          value: quay.io/rhn_support_jlevy/quarkus-jpl
+        - name: TAG
+          value: $(tt.params.short-id)
+        - name: TLSVERIFY
+          value: 'false'
+        - name: GIT_REPO
+          value: $(tt.params.gitrepositoryurl)
+        - name: GIT_REVISION
+          value: $(tt.params.gitrevision)
+        - name: short-git-revision
+          value: $(tt.params.short-id)
+        pipelineRef:
+          name: s2i-build-and-deploy
+        serviceAccountName: pipeline
+        timeout: 1h0m0s
+        workspaces:
+        - name: workspace
+          persistentVolumeClaim:
+            claimName: pipeline-pvc

@@ -1,0 +1,24 @@
+---
+apiVersion: user.openshift.io/v1
+kind: Group
+metadata:
+  name: argocd-admins
+users:
+- admin
+- jeanphilippelevy
+
+---
+apiVersion: user.openshift.io/v1
+kind: Group
+metadata:
+  name: power-dev
+users:
+- dev1
+
+---
+apiVersion: user.openshift.io/v1
+kind: Group
+metadata:
+  name: regular-dev
+users:
+- dev2

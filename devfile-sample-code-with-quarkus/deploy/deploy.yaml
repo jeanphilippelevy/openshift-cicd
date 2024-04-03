@@ -1,0 +1,54 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: my-java-quarkus
+  labels:
+    version: "1.4"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-quarkus-app
+  template:
+    metadata:
+      labels:
+        app: java-quarkus-app
+        version: "1.4"
+    spec:
+      containers:
+        - name: my-java-quarkus
+          image: quay.io/rhn_support_jlevy/quarkus-jpl:latest
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              memory: "180Mi"
+              cpu: "10m"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: my-java-quarkus-svc
+spec:
+  ports:
+    - name: http-8080
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: java-quarkus-app
+
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: quarkus-prod 
+spec:
+  host: my-java-quarkus.apps.ocp.jpl.ovh 
+  to:
+    kind: Service
+    name: my-java-quarkus-svc 
+  port:
+    targetPort: http-8080
