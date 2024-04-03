@@ -61,7 +61,7 @@ spec:
             oc annotate deployment $(params.APP_NAME)
             app.openshift.io/vcs-uri=$(params.GIT_REPO)
 
-            oc expose svc/$(params.APP_NAME)
+            oc create route edge --service=$(params.APP_NAME)
       runAfter:
         - build
       taskRef:
