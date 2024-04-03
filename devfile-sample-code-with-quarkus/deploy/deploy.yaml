@@ -20,12 +20,14 @@ spec:
           image: quay.io/rhn_support_jlevy/quarkus-jpl:latest
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 8081
               protocol: TCP
           resources:
             requests:
-              memory: "180Mi"
+              memory: "100Mi"
               cpu: "10m"
+---
+
 ---
 kind: Service
 apiVersion: v1
@@ -33,10 +35,10 @@ metadata:
   name: my-java-quarkus-svc
 spec:
   ports:
-    - name: http-8080
-      port: 8080
+    - name: http-8081
+      port: 8081
       protocol: TCP
-      targetPort: 8080
+      targetPort: 8081
   selector:
     app: java-quarkus-app
 
@@ -51,4 +53,4 @@ spec:
     kind: Service
     name: my-java-quarkus-svc 
   port:
-    targetPort: http-8080
+    targetPort: http-8081
