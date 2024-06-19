@@ -3,7 +3,7 @@ apiVersion: apps/v1
 metadata:
   name: my-java-quarkus
   labels:
-    version: "1.0"
+    version: "2.0"
     app.openshift.io/runtime: quarkus
 spec:
   replicas: 1
@@ -14,7 +14,7 @@ spec:
     metadata:
       labels:
         app: java-quarkus-app
-        version: "1.0"
+        version: "2.0"
         app.openshift.io/runtime: quarkus
     spec:
       containers:
